@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New UrlBase{% endblock %}
+
+{% block body %}
+    <h1>Create new UrlBase</h1>
+
+    {{ include('url_base/_form.html.twig') }}
+
+    <a href="{{ path('url_base_index') }}">back to list</a>
+{% endblock %}
