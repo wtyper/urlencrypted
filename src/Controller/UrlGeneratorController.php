@@ -15,7 +15,7 @@ class UrlGeneratorController extends AbstractController
     public function index(UrlBaseRepository $urlBaseRepository): Response
     {
         return $this->render('url_generator/result.html.twig', [
-            'url_generator' => $urlBaseRepository->findBy(['id'], ['id'=>'DESC'],1,0),
+            'url_generator' => $urlBaseRepository->findBy([], ['id'=>'DESC'],1),
         ]);
     }
 }
