@@ -22,7 +22,7 @@ class UrlBase
     private $baseUrl;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $generatedUrl;
 
