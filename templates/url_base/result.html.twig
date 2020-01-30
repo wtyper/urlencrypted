@@ -8,22 +8,15 @@
 <table class="table">
     <thead>
     <tr>
-        <th>GeneratedUrl</th>
+        <th>Generated Url</th>
     </tr>
     </thead>
     <tbody>
-    {%  for url_base in url_generator %}
         <tr>
-            <td>{{ url_base.id }}</td>
             <td>
-            {{ url_base.generatedUrl|url_encode}}
+            {{ urlRedirect.generatedUrl|url_encode}}
             </td>
         </tr>
-    {% else %}
-        <tr>
-            <td colspan="4">Oops, something goes wrong!</td>
-        </tr>
-    {% endfor %}
     </tbody>
 </table>
 {% endblock %}

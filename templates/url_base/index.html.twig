@@ -1,33 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}UrlBase index{% endblock %}
+{% block title %}UrlRedirect index{% endblock %}
 
 {% block body %}
-    <h1>UrlBase index</h1>
+    <h1>UrlRedirect index</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>BaseUrl</th>
-                <th>GeneratedUrl</th>
-                <th>actions</th>
+                <th>Your Url </th>
+                <th>Generated Url</th>
             </tr>
         </thead>
         <tbody>
-        {% for url_base in url_bases %}
+        {% for url_redirect in url_redirect %}
             <tr>
-                <td>{{ url_base.id }}</td>
-                <td>{{ url_base.baseUrl }}</td>
-                    <td>{{ url_base.generatedUrl}}</td>
-                <td>
-                    <a href="{{ path('url_base_show', {'id': url_base.id}) }}">show</a>
-                    <a href="{{ path('url_base_edit', {'id': url_base.id}) }}">edit</a>
-                </td>
+                <td>{{ url_redirect.id }}</td>
+                <td>{{ url_redirect.baseUrl }}</td>
+                <td>{{ url_redirect.generatedUrl}}</td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">No records found</td>
             </tr>
         {% endfor %}
         </tbody>
