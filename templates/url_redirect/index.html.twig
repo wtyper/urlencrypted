@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Redirected Urls{% endblock %}
+{% block title %}{% trans %}Redirected Urls {% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>All your redirected urls</h1>
+    <h1>{% trans %}All your redirected urls{% endtrans %}</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Your Url </th>
-                <th>Generated Url</th>
+                <th>{% tarns %}Your Url {% endtrans %}</th>
+                <th>{% trans %}Generated Url{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -22,11 +22,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">No records found</td>
+                <td colspan="4"> {% trans %}No records found{% endtrans %}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('url_redirect_new') }}">Generate new url</a>
+    <a href="{{ path('url_redirect_new') }}">{% trans %}Generate new url{% endtrans %}</a>
 {% endblock %}

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Generate new Url{% endblock %}
+{% block title %} {% trans %} Generate new Url {% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Paste your url to generate encrypted version</h1>
+    <h1>{% trans %}Paste your url to generate encrypted version{% endtrans %}</h1>
 
     {{ include('url_redirect/_form.html.twig') }}
 
