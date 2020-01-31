@@ -3,6 +3,7 @@
 {% block title %}UrlBase index{% endblock %}
 
 {% block body %}
+    {% if app.user %}
     <h1>UrlBase index</h1>
 
     <table class="table">
@@ -21,17 +22,18 @@
                 <td>{{ url_base.baseUrl }}</td>
                     <td>{{ url_base.generatedUrl}}</td>
                 <td>
-                    <a href="{{ path('url_base_show', {'id': url_base.id}) }}">show</a>
-                    <a href="{{ path('url_base_edit', {'id': url_base.id}) }}">edit</a>
+                    <a href="{{ path('url_base_show', {'id': url_base.id}) }}">Show</a>
+                    <a href="{{ path('url_base_edit', {'id': url_base.id}) }}">Edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Oops, no records found!</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('url_base_new') }}">Create new</a>
+    <a href="{{ path('url_base_new') }}" class="btn btn-secondary">Generate new url</a>
+    {%  endif %}
 {% endblock %}

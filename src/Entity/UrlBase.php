@@ -26,6 +26,11 @@ class UrlBase
      */
     private $generatedUrl;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -49,6 +54,18 @@ class UrlBase
     }
 
     public function setGeneratedUrl(string $generatedUrl): self
+    {
+        $this->generatedUrl = $generatedUrl;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->generatedUrl;
+    }
+
+    public function setDescription(string $generatedUrl): self
     {
         $this->generatedUrl = $generatedUrl;
 
