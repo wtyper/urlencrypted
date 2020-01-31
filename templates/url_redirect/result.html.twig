@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% trans %}Generated url{% endtrans %}{% endblock %}
+
+{% block body %}
+<h1> {% trans %}Copy your generated url{% endtrans %}</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>{% trans %}Generated Url {% endtrnas %}</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+            {{ urlGenerator.generatedUrl|url_encode}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

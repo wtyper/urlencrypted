@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Redirected Urls {% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}All your redirected urls{% endtrans %}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{% trans %}Your Url {% endtrans %}</th>
+                <th>{% trans %}Generated Url{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for url_redirect in url_redirect %}
+            <tr>
+                <td>{{ url_redirect.id }}</td>
+                <td>{{ url_redirect.baseUrl }}</td>
+                <td>{{ url_redirect.generatedUrl}}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4"> {% trans %}No records found{% endtrans %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('url_redirect_new') }}">{% trans %}Generate new url{% endtrans %}</a>
+{% endblock %}
