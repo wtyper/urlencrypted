@@ -35,5 +35,7 @@
     </table>
 
     <a href="{{ path('url_base_new') }}" class="btn btn-secondary">Generate new url</a>
+        {% else %}
+         You have to be loged in to see urls!
     {%  endif %}
 {% endblock %}

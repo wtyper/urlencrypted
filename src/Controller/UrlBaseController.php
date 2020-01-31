@@ -38,7 +38,6 @@ class UrlBaseController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($urlBase);
             $entityManager->flush();
-            $nextAction = $form->get('generatedUrl');
 
             return $this->redirectToRoute('url_generator_result');
         }

@@ -14,9 +14,7 @@ class UrlBaseType extends AbstractType
     {
         $builder
             ->add('baseUrl')
-            ->add('description')
-            ->add('generatedUrl', SubmitType::class, ['label'=>'Generate new url'])
-        ;
+            ->add('description');
     }
 
     public function configureOptions(OptionsResolver $resolver)
