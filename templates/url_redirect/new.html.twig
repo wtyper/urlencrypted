@@ -3,8 +3,11 @@
 {% block title %} {% trans %} Generate new Url {% endtrans %}{% endblock %}
 
 {% block body %}
+    {% if app.user %}
     <h1>{% trans %}Paste your url to generate encrypted version{% endtrans %}</h1>
 
     {{ include('url_redirect/_form.html.twig') }}
 
+<a href="{{ path('url_base_index') }}" class="btn btn-secondary" >Back to list</a>
+    {%  endif %}
 {% endblock %}
