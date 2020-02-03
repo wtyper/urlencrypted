@@ -21,7 +21,7 @@ class UrlBaseController extends AbstractController
     public function index(UrlBaseRepository $urlBaseRepository): Response
     {
         return $this->render('url_base/index.html.twig', [
-            'url_bases' => $urlBaseRepository->findAll(),
+            'url_bases' => $urlBaseRepository->findBy(['user' => $this->getUser()]),
         ]);
     }
 
@@ -33,15 +33,13 @@ class UrlBaseController extends AbstractController
         $urlBase = new UrlBase();
         $form = $this->createForm(UrlBaseType::class, $urlBase);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $urlBase->setUser($this->getUser());
             $entityManager->persist($urlBase);
             $entityManager->flush();
-
             return $this->redirectToRoute('url_generator_result');
         }
-
         return $this->render('url_base/new.html.twig', [
             'url_base' => $urlBase,
             'form' => $form->createView(),

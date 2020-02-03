@@ -11,6 +11,7 @@
             <tr>
                 <th>Id</th>
                 <th>BaseUrl</th>
+                <th>Description</th>
                 <th>GeneratedUrl</th>
                 <th>actions</th>
             </tr>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{ url_base.id }}</td>
                 <td>{{ url_base.baseUrl }}</td>
+                <td>{{ url_base.description }}</td>
                     <td>{{ url_base.generatedUrl}}</td>
                 <td>
                     <a href="{{ path('url_base_show', {'id': url_base.id}) }}">Show</a>
