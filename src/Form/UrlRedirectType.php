@@ -14,7 +14,7 @@ class UrlRedirectType extends AbstractType
     {
         $builder
             ->add('baseUrl')
-            ->add('urlGenerator', SubmitType::class, ['label'=>'GenerateUlr'])
+            ->add('description');
         ;
     }
 

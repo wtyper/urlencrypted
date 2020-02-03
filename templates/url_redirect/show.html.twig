@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Redirected Url {% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Your redirected url{% endtrans %}</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ url_redirect.id }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Your Url {% endtrans %}</th>
+            <td>{{ url_redicrect.baseUrl }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Description {% endtrans %}</th>
+            <td>{{ url_redirect.description }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Generated Url{% endtrans %}</th>
+            <td>{{ url_redirect.generatedUrl }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('url_redirect_index') }}" class="btn btn-secondary">Back to list</a>
+
+    <a href="{{ path('url_redirect_edit', {'id': url_redirect.id}) }}" class="btn btn-secondary">Edit</a>
+
+    {{ include('url_redirect/_delete_form.html.twig') }}
+{% endblock %}

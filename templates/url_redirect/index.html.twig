@@ -3,6 +3,7 @@
 {% block title %}{% trans %}Redirected Urls {% endtrans %}{% endblock %}
 
 {% block body %}
+    {% if app.user %}
     <h1>{% trans %}All your redirected urls{% endtrans %}</h1>
 
     <table class="table">
@@ -10,7 +11,9 @@
             <tr>
                 <th>Id</th>
                 <th>{% trans %}Your Url {% endtrans %}</th>
+                <th>{% trans %}Description {% endtrans %}</th>
                 <th>{% trans %}Generated Url{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -18,15 +21,23 @@
             <tr>
                 <td>{{ url_redirect.id }}</td>
                 <td>{{ url_redirect.baseUrl }}</td>
+                <td>{{ url_redirect.description }}</td>
                 <td>{{ url_redirect.generatedUrl}}</td>
+                <td>
+                    <a href="{{ path('url_redirect_show', {'id': url_redirect.id}) }}">Show</a>
+                    <a href="{{ path('url_redirect_edit', {'id': url_redirect.id}) }}">Edit</a>
+                </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4"> {% trans %}No records found{% endtrans %}</td>
+                <td colspan="4"> {% trans %}Oops, no records found{% endtrans %}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('url_redirect_new') }}">{% trans %}Generate new url{% endtrans %}</a>
+    {% else %}
+        You have to be loged in to see urls!
+    {%  endif %}
 {% endblock %}
