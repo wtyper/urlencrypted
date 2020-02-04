@@ -15,7 +15,6 @@ class UrlRedirectType extends AbstractType
         $builder
             ->add('baseUrl')
             ->add('description');
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

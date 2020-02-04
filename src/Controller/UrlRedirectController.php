@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGenerator;
+
 
 /**
  * @Route("/url/redirect")
@@ -39,7 +39,7 @@ class UrlRedirectController extends AbstractController
             $urlRedirect->setUser($this->getUser());
             $entityManager->persist($urlRedirect);
             $entityManager->flush();
-            return $this->redirectToRoute('url_generator_result');
+            return $this->redirectToRoute('url_redirect_result', ['id'=>'$id']);
         }
         return $this->render('url_redirect/new.html.twig', [
             'url_redirect' => $urlRedirect,
@@ -50,10 +50,10 @@ class UrlRedirectController extends AbstractController
     /**
      * @Route("/result/{id}", name="url_redirect_result")
      */
-    public function result (UrlGenerator $urlGenerator): Response
+    public function generated (UrlRedirect $urlRedirect): Response
     {
         return $this->render('url_redirect/result.html.twig', [
-            'urlGenerator' => $urlGenerator,
+            'urlRedirect' => $urlRedirect
         ]);
     }
     /**
@@ -62,7 +62,7 @@ class UrlRedirectController extends AbstractController
     public function show(UrlRedirect $urlRedirect): Response
     {
         return $this->render('url_redirect/show.html.twig', [
-            'url_redirect' => $urlredirect,
+            'url_redirect' => $urlRedirect,
         ]);
     }
 
