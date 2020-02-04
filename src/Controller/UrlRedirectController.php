@@ -39,7 +39,7 @@ class UrlRedirectController extends AbstractController
             $urlRedirect->setUser($this->getUser());
             $entityManager->persist($urlRedirect);
             $entityManager->flush();
-            return $this->redirectToRoute('url_redirect_result', ['id'=>'$id']);
+            return $this->redirectToRoute('url_redirect_result', ['id' => $urlRedirect->getId()]);
         }
         return $this->render('url_redirect/new.html.twig', [
             'url_redirect' => $urlRedirect,
