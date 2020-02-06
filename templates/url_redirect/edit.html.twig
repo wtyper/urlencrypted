@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit UrlBase{% endblock %}
+
+{% block body %}
+    <h1>Edit UrlBase</h1>
+    {{ include('url_redirect/_edit_form.html.twig', {'button_label': 'Update me'}) }}
+</br>
+    <a href="{{ path('url_redirect_index') }}" class="btn btn-secondary">Back to list</a>
+</br>
+    </br>
+    {{ include('url_redirect/_delete_form.html.twig') }}
+{% endblock %}
