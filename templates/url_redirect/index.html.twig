@@ -3,29 +3,28 @@
 {% block title %}{% trans %}Redirected Urls {% endtrans %}{% endblock %}
 
 {% block body %}
-    {% if app.user %}
-    <h1>{% trans %}All your redirected urls{% endtrans %}</h1>
+    <h1>{% trans %}All your generated urls{% endtrans %}</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>{% trans %}Your Url {% endtrans %}</th>
+                <th>{% trans %}Your Url {% endtrans %}
                 <th>{% trans %}Description {% endtrans %}</th>
                 <th>{% trans %}Generated Url{% endtrans %}</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
-        {% for url_redirect in url_redirect %}
+        {% for redirects in url_redirect %}
             <tr>
-                <td>{{ url_redirect.id }}</td>
-                <td>{{ url_redirect.baseUrl }}</td>
-                <td>{{ url_redirect.description }}</td>
-                <td>{{ url_redirect.generatedUrl}}</td>
+                <td>{{ redirects.id }}</td>
+                <td>{{ redirects.baseUrl }}</td>
+                <td>{{ redirects.description }}</td>
+                <td>{{ redirects.generatedUrl}}</td>
                 <td>
-                    <a href="{{ path('url_redirect_show', {'id': url_redirect.id}) }}">Show</a>
-                    <a href="{{ path('url_redirect_edit', {'id': url_redirect.id}) }}">Edit</a>
+                    <a href="{{ path('url_redirect_show', {'id': redirects.id}) }}">Show</a>
+                    <a href="{{ path('url_redirect_edit', {'id': redirects.id}) }}">Edit</a>
                 </td>
             </tr>
         {% else %}
@@ -37,7 +36,4 @@
     </table>
 
     <a href="{{ path('url_redirect_new') }}">{% trans %}Generate new url{% endtrans %}</a>
-    {% else %}
-        You have to be sing in to see urls!
-    {%  endif %}
 {% endblock %}

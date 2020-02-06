@@ -50,17 +50,22 @@ class UrlRedirectController extends AbstractController
     /**
      * @Route("/result/{id}", name="url_redirect_result")
      */
-    public function generated (UrlRedirect $urlRedirect): Response
+    public function generated(UrlRedirect $urlRedirect): Response
     {
         return $this->render('url_redirect/result.html.twig', [
             'urlRedirect' => $urlRedirect
         ]);
     }
+
     /**
      * @Route("/{id}", name="url_redirect_show", methods={"GET"})
      */
     public function show(UrlRedirect $urlRedirect): Response
     {
+        if ($urlRedirect->getUser() !== $this->getUser()) {
+            return new Response('you failed', 404);
+        }
+
         return $this->render('url_redirect/show.html.twig', [
             'url_redirect' => $urlRedirect,
         ]);
@@ -71,6 +76,9 @@ class UrlRedirectController extends AbstractController
      */
     public function edit(Request $request, UrlRedirect $urlRedirect): Response
     {
+        if ($urlRedirect->getUser() !== $this->getUser()) {
+            return new Response('you failed', 404);
+        }
         $form = $this->createForm(UrlRedirectType::class, $urlRedirect);
         $form->handleRequest($request);
 
@@ -91,7 +99,7 @@ class UrlRedirectController extends AbstractController
      */
     public function delete(Request $request, UrlRedirect $urlRedirect): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$urlRedirect->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $urlRedirect->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($urlRedirect);
             $entityManager->flush();
