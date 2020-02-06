@@ -8,6 +8,7 @@ use App\Repository\UrlRedirectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -63,7 +64,7 @@ class UrlRedirectController extends AbstractController
     public function show(UrlRedirect $urlRedirect): Response
     {
         if ($urlRedirect->getUser() !== $this->getUser()) {
-            return new Response('you failed', 404);
+            throw new NotFoundHttpException();
         }
 
         return $this->render('url_redirect/show.html.twig', [
@@ -77,7 +78,7 @@ class UrlRedirectController extends AbstractController
     public function edit(Request $request, UrlRedirect $urlRedirect): Response
     {
         if ($urlRedirect->getUser() !== $this->getUser()) {
-            return new Response('you failed', 404);
+            throw new NotFoundHttpException();
         }
         $form = $this->createForm(UrlRedirectType::class, $urlRedirect);
         $form->handleRequest($request);

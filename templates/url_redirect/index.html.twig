@@ -16,15 +16,15 @@
             </tr>
         </thead>
         <tbody>
-        {% for redirects in url_redirect %}
+        {% for redirect in url_redirect %}
             <tr>
-                <td>{{ redirects.id }}</td>
-                <td>{{ redirects.baseUrl }}</td>
-                <td>{{ redirects.description }}</td>
-                <td>{{ redirects.generatedUrl}}</td>
+                <td>{{ redirect.id }}</td>
+                <td>{{ redirect.baseUrl }}</td>
+                <td>{{ redirect.description }}</td>
+                <td>{{ redirect.generatedUrl}}</td>
                 <td>
-                    <a href="{{ path('url_redirect_show', {'id': redirects.id}) }}">Show</a>
-                    <a href="{{ path('url_redirect_edit', {'id': redirects.id}) }}">Edit</a>
+                    <a href="{{ path('url_redirect_show', {'id': redirect.id}) }}">Show</a>
+                    <a href="{{ path('url_redirect_edit', {'id': redirect.id}) }}">Edit</a>
                 </td>
             </tr>
         {% else %}
